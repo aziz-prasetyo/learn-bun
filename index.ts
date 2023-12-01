@@ -27,6 +27,10 @@ const server = Bun.serve({
       throw new Error("Could not fetch \"SQUEL\"")
     }
 
+    if (url.pathname === '/greet') {
+      return new Response(Bun.file('./greet.txt'))
+    }
+
     return new Response(figlet.textSync("Not Found 404"))
   },
   error(err) {
